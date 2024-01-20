@@ -10,12 +10,23 @@ module.exports = {
           300: "#696969",
           400: "#212121",
         },
-        "stella-blue": "#0000FF"
+        "stella-blue": "#0000FF",
       },
       fontFamily: {
         sans: ["Silkscreen", "sans-serif"],
       },
+      height: {
+        screen: ["100vh", "100dvh"],
+      },
+
+      minHeight: {
+        screen: ["100vh", "100dvh"],
+      },
+
+      maxHeight: {
+        screen: ["100vh", "100dvh"],
+      },
     },
   },
   plugins: [],
-}
+};
