@@ -26,7 +26,9 @@ component = do
       JE.div [ "class" := "relative w-full min-h-screen h-fit flex flex-col gap-12 items-center justify-center py-32" ] do -- メイン
         frameComponent -- メインのフレーム
         JE.img [ "src" := "/img/icon.png", "class" := "w-24 rendering-pixelated" ] -- アイコン
-        JE.img [ "src" := "/img/title.png", "class" := "w-96 rendering-pixelated" ]
+        JE.div [ "class" := "flex flex-col items-center justify-center gap-2" ] do
+          JE.img [ "src" := "/img/title.png", "class" := "w-96 rendering-pixelated" ] -- タイトル
+          text "A puzzle game to connect all the stars."
         JE.div [ "class" := "flex flex-col items-center gap-8" ] do
           mainLink (pure "https://yukikurage.itch.io/stellagate") do
             JE.div [ "class" := "flex flex-col items-center" ] do
