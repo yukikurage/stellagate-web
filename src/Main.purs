@@ -21,13 +21,13 @@ main = launchAff_ do
 
 component :: forall m. Component m
 component = do
-  JE.div [ "class" := "fixed w-screen h-screen overflow-auto text-stella-gray-400" ] do -- 一番外側
+  JE.div [ "class" := "fixed w-screen h-screen overflow-auto text-stella-gray-400 text-xs sm:text-base" ] do -- 一番外側
     JE.div [ "class" := "flex w-full h-fit flex-col items-center" ] do -- メイン + フッター
-      JE.div [ "class" := "relative w-full min-h-screen h-fit flex flex-col gap-12 items-center justify-center py-32" ] do -- メイン
+      JE.div [ "class" := "relative w-full min-h-screen h-fit flex flex-col gap-12 items-center justify-center py-24 sm:py-32" ] do -- メイン
         frameComponent -- メインのフレーム
-        JE.img [ "src" := "/img/icon.png", "class" := "w-24 rendering-pixelated" ] -- アイコン
         JE.div [ "class" := "flex flex-col items-center justify-center gap-2" ] do
-          JE.img [ "src" := "/img/title.png", "class" := "w-96 rendering-pixelated" ] -- タイトル
+          JE.img [ "src" := "/img/icon.png", "class" := "w-20 sm:w-24 rendering-pixelated py-6" ] -- アイコン
+          JE.img [ "src" := "/img/title.png", "class" := "w-80 sm:w-96 rendering-pixelated" ] -- タイトル
           text "A puzzle game to connect all the stars."
         JE.div [ "class" := "flex flex-col items-center gap-8" ] do
           mainLink (pure "https://yukikurage.itch.io/stellagate") do
@@ -43,21 +43,21 @@ component = do
               JE.div' do
                 text "Add to wishlist!"
         -- youtube
-        JE.div [ "class" := "py-3" ] do
+        JE.div [ "class" := "py-3 w-2/3" ] do
           raw
             """
-<iframe width="480" height="270" src="https://www.youtube.com/embed/zIu0SpOYV7Q?si=mNCM8UJdZWFo76Fp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe style="aspect-ratio: 16/9; width: 100%;"src="https://www.youtube.com/embed/zIu0SpOYV7Q?si=mNCM8UJdZWFo76Fp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 """
     footerComponent
 
 frameComponent :: forall m. Component m
 frameComponent = do
-  JE.div [ "class" := "absolute left-0 top-0 right-0 bottom-0 bg-stella-gray-400 p-5 -z-50" ] do
+  JE.div [ "class" := "absolute left-0 top-0 right-0 bottom-0 bg-stella-gray-400 p-3 sm:p-5 -z-50" ] do
     JE.div [ "class" := "relative w-full h-full flex flex-col items-center bg-stella-gray-100 -z-40" ] do
-      JE.img [ "src" := "/img/frame.png", "class" := "absolute top-0 left-0 w-48 rendering-pixelated" ]
-      JE.img [ "src" := "/img/frame.png", "class" := "absolute top-0 right-0 w-48 rendering-pixelated transform -scale-x-100" ]
-      JE.img [ "src" := "/img/frame.png", "class" := "absolute bottom-0 left-0 w-48 rendering-pixelated transform -scale-y-100" ]
-      JE.img [ "src" := "/img/frame.png", "class" := "absolute bottom-0 right-0 w-48 rendering-pixelated transform -scale-x-100 -scale-y-100" ]
+      JE.img [ "src" := "/img/frame.png", "class" := "absolute top-0 left-0 w-40 sm:w-48 rendering-pixelated" ]
+      JE.img [ "src" := "/img/frame.png", "class" := "absolute top-0 right-0 w-40 sm:w-48 rendering-pixelated transform -scale-x-100" ]
+      JE.img [ "src" := "/img/frame.png", "class" := "absolute bottom-0 left-0 w-40 sm:w-48 rendering-pixelated transform -scale-y-100" ]
+      JE.img [ "src" := "/img/frame.png", "class" := "absolute bottom-0 right-0 w-40 sm:w-48 rendering-pixelated transform -scale-x-100 -scale-y-100" ]
 
 mainLink :: forall m. Signal String -> Component m -> Component m
 mainLink href children = do
