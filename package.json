@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "bundle:script": "npx spago bundle-app -t ./public/index.js -y",
+    "bundle:script": "npx spago -x spago-bundle.dhall build && npx purs-backend-es bundle-app -s -t ./public/index.js -y",
     "bundle:css": "tailwindcss -i ./src/index.css -o ./public/index.css -m",
     "bundle": "run-s bundle:*",
     "watch:script": "npx spago bundle-app -t ./public/index.js -w",
@@ -20,6 +20,7 @@
     "live-server": "^1.2.2",
     "npm-run-all": "^4.1.5",
     "purescript": "^0.15.14",
+    "purs-backend-es": "^1.4.2",
     "purs-tidy": "^0.10.1",
     "spago": "^0.21.0",
     "tailwindcss": "^3.4.1"
