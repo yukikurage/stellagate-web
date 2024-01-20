@@ -43,7 +43,7 @@ component = do
               JE.div' do
                 text "Add to wishlist!"
         -- youtube
-        JE.div [ "class" := "py-3 w-2/3" ] do
+        JE.div [ "class" := "py-3 w-2/3 max-w-[36rem]" ] do
           raw
             """
 <iframe style="aspect-ratio: 16/9; width: 100%;"src="https://www.youtube.com/embed/zIu0SpOYV7Q?si=mNCM8UJdZWFo76Fp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
