@@ -36,7 +36,7 @@ component = do
                 text "Itch.io"
               JE.div' do
                 text "Free trial!"
-          mainLink (pure "https://store.steampowered.com/app/2721030/Stellagate/") do
+          mainLink (pure "https://store.steampowered.com/app/2721030/Stellagate?utm_source=homepage") do
             JE.div [ "class" := "flex flex-col items-center" ] do
               JE.div [ "class" := "text-3xl" ] do
                 text "Steam"
