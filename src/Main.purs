@@ -1,27 +1,32 @@
 module Main where
 
+import Data.Tuple
+import Data.Tuple.Nested
 import Prelude
 
 import Data.Foldable (traverse_)
 import Effect (Effect)
 import Effect.Aff (launchAff_)
-import Effect.Class (liftEffect)
+import Effect.Class (class MonadEffect, liftEffect)
 import Jelly.Aff (awaitBody)
-import Jelly.Component (Component, raw, text)
+import Jelly.Component (Component, hooks, raw, text, textSig)
 import Jelly.Element as JE
 import Jelly.Hooks (runHooks_)
 import Jelly.Hydrate (mount)
-import Jelly.Prop ((:=), (@=))
-import Jelly.Signal (Signal)
+import Jelly.Prop (on, (:=), (@=))
+import Jelly.Signal (Signal, modifyChannel_, newState)
+import Web.HTML.Event.EventTypes (click)
 
 main :: Effect Unit
 main = launchAff_ do
   bodyMaybe <- awaitBody
   liftEffect $ traverse_ (runHooks_ <<< mount component) bodyMaybe
 
-component :: forall m. Component m
-component = do
-  JE.div [ "class" := "fixed w-screen h-screen overflow-auto text-stella-gray-400 text-xs sm:text-base" ] do -- 一番外側
+component :: forall m. MonadEffect m => Component m
+component = hooks do
+  countSig /\ countChn <- newState 0
+
+  pure $ JE.div [ "class" := "fixed w-screen h-screen overflow-auto text-stella-gray-400 text-xs sm:text-base bg-stella-gray-400" ] do -- 一番外側
     JE.div [ "class" := "flex w-full h-fit flex-col items-center" ] do -- メイン + フッター
       JE.div [ "class" := "relative w-full min-h-screen h-fit flex flex-col gap-12 items-center justify-center py-24 sm:py-32" ] do -- メイン
         frameComponent -- メインのフレーム
@@ -48,6 +53,54 @@ component = do
             """
 <iframe style="aspect-ratio: 16/9; width: 100%;"src="https://www.youtube.com/embed/zIu0SpOYV7Q?si=mNCM8UJdZWFo76Fp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 """
+        let name x = JE.div [ "class" := "text-2xl m-auto" ] $ text x
+        JE.div [ "class" := "text-3xl m-2" ] $ text "- CREDIT -"
+        JE.div [ "class" := "flex flex-col items-center gap-8" ] do
+          JE.div [ "class" := "flex flex-col items-center gap-2" ] do
+            text "Director"
+            JE.div [ "class" := "flex flex-col items-center gap-2" ] do
+              JE.a [ "class" := "underline hover:text-stella-gray-300 transition-colors", "href" := "https://x.com/yukikurage_2019", "target" := "_blank" ] $ name "YUKIKURAGE"
+          JE.div [ "class" := "flex flex-col items-center gap-2" ] do
+            text "Lead Programmer"
+            JE.div [ "class" := "flex flex-col items-center gap-2" ] do
+              name "cobalt"
+          JE.div [ "class" := "flex flex-col items-center gap-2" ] do
+            text "Programmer"
+            JE.div [ "class" := "grid grid-cols-2 flex flex-col items-center gap-2 w-96" ] do
+              name "Uzaki"
+              name "pikachu"
+              name "Alt--er"
+              name "Nors"
+              name "u"
+              name "TAKE"
+              name "zer0-star"
+              name "Yukikurage"
+          JE.div [ "class" := "flex flex-col items-center gap-2" ] do
+            text "Level Designer"
+            JE.div [ "class" := "grid grid-cols-2 flex flex-col items-center gap-2 w-96" ] do
+              name "soramea"
+              name "beferia"
+              name "pina"
+              name "Alt--er"
+              name "tqk"
+              name "s9"
+          JE.div [ "class" := "flex flex-col items-center gap-2" ] do
+            text "Graphic Designer"
+            JE.div [ "class" := "grid grid-cols-2 flex flex-col items-center gap-2 w-96" ] do
+              name "555"
+              name "Yukikurage"
+          JE.div [ "class" := "flex flex-col items-center gap-2" ] do
+            text "Sound Designer"
+            JE.div [ "class" := "grid grid-cols-2 flex flex-col items-center gap-2 w-96" ] do
+              name "Cd"
+              name "shogotin"
+              name "Yukikurage"
+          JE.div [ "class" := "flex flex-col items-center gap-2" ] do
+            text "Writer"
+            JE.div [ "class" := "grid grid-cols-2 flex flex-col items-center gap-2 w-96" ] do
+              name "kanibaku"
+              name "Cd"
+              name "beferia"
     footerComponent
 
 frameComponent :: forall m. Component m
