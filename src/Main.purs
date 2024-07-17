@@ -74,7 +74,6 @@ component = hooks do
               name "u"
               name "TAKE"
               name "zer0-star"
-              name "Yukikurage"
           JE.div [ "class" := "flex flex-col items-center gap-2" ] do
             text "Level Designer"
             JE.div [ "class" := "grid grid-cols-2 flex flex-col items-center gap-2 w-96" ] do
@@ -88,13 +87,11 @@ component = hooks do
             text "Graphic Designer"
             JE.div [ "class" := "grid grid-cols-2 flex flex-col items-center gap-2 w-96" ] do
               name "555"
-              name "Yukikurage"
           JE.div [ "class" := "flex flex-col items-center gap-2" ] do
             text "Sound Designer"
             JE.div [ "class" := "grid grid-cols-2 flex flex-col items-center gap-2 w-96" ] do
               name "Cd"
               name "shogotin"
-              name "Yukikurage"
           JE.div [ "class" := "flex flex-col items-center gap-2" ] do
             text "Writer"
             JE.div [ "class" := "grid grid-cols-2 flex flex-col items-center gap-2 w-96" ] do
