@@ -85,7 +85,7 @@ component = hooks do
               name "s9"
           JE.div [ "class" := "flex flex-col items-center gap-2" ] do
             text "Graphic Designer"
-            JE.div [ "class" := "grid grid-cols-2 flex flex-col items-center gap-2 w-96" ] do
+            JE.div [ "class" := "flex flex-col items-center gap-2 w-96" ] do
               name "555"
           JE.div [ "class" := "flex flex-col items-center gap-2" ] do
             text "Sound Designer"
